@@ -14,7 +14,7 @@ const App = () => {
 
     useEffect(() => {
         if (token) {
-            axios.get('http://localhost:5000/users', { headers: { Authorization: token } })
+            axios.get('https://vercel.com/ricardos-projects-f677a384/myapp-backend/DDRV6ZRBLrWsqWtYq3r8oCDzt8F8/users', { headers: { Authorization: token } })
                 .then(response => setUsers(response.data))
                 .catch(() => {
                     alert('Unauthorized. Please login.');
@@ -42,7 +42,7 @@ const App = () => {
     };
 
     const handleBlockUsers = () => {
-        axios.post('http://localhost:5000/users/block', { userIds: selectedUsers }, { headers: { Authorization: token } })
+        axios.post('https://vercel.com/ricardos-projects-f677a384/myapp-backend/DDRV6ZRBLrWsqWtYq3r8oCDzt8F8/users/block', { userIds: selectedUsers }, { headers: { Authorization: token } })
             .then(() => {
                 setUsers(users.map(user => (selectedUsers.includes(user.id) ? { ...user, status: 'blocked' } : user)));
                 setSelectedUsers([]);
@@ -55,7 +55,7 @@ const App = () => {
     };
 
     const handleUnlockUsers = () => {
-        axios.post('http://localhost:5000/users/unblock', { userIds: selectedUsers }, { headers: { Authorization: token } })
+        axios.post('https://vercel.com/ricardos-projects-f677a384/myapp-backend/DDRV6ZRBLrWsqWtYq3r8oCDzt8F8/users/unblock', { userIds: selectedUsers }, { headers: { Authorization: token } })
             .then(() => {
                 setUsers(users.map(user => (selectedUsers.includes(user.id) ? { ...user, status: 'active' } : user)));
                 setSelectedUsers([]);
@@ -63,7 +63,7 @@ const App = () => {
     };
 
     const handleDeleteUser = (id) => {
-        axios.delete(`http://localhost:5000/users/${id}`, { headers: { Authorization: token } })
+        axios.delete(`https://vercel.com/ricardos-projects-f677a384/myapp-backend/DDRV6ZRBLrWsqWtYq3r8oCDzt8F8/users/${id}`, { headers: { Authorization: token } })
             .then(() => {
                 setUsers(users.filter(user => user.id !== id));
             });
